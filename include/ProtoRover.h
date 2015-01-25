@@ -1,7 +1,7 @@
 #ifndef PROTOROVER_H
 #define PROTO_ROVER_H
 
-#include <Arduino.h>
+#include <xc32.h>
 
 enum WHEEL {
   FRONT_LEFT,
@@ -16,6 +16,20 @@ enum WHEEL {
 enum DIRECTION {
   FORWARD,
   BACKWARD
+};
+
+enum OCM {
+  OCM_1 = 1,
+  OCM_2,
+  OCM_3,
+  OCM_4
+  OCM_5
+}
+
+enum TIMER {
+  TIMER_2 = 2,
+  TIMER_3,
+  TIMER_32
 };
 
 class Motor

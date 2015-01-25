@@ -24,14 +24,89 @@ bool Motor::setPhasePin(int pp)
   return false;
 }
 
-bool Motor::setEnablePin(int ep)
+bool Motor::setOCM(int ocm, int td)
 {
+  // Must be one of the NU32 PWM pins
+  switch(ocm) {
+    case OCM_1: {
+      if(td == TIMER_2 || td == TIMER_3 || td == TIMER_23) {
+        OC1CONbits.SEL = (td == TIMER_2) ? 0 : 1;
+        OC1CONbits.OCM = 0b110;
+      }
+      break;
+    }
+    case OCM_2: {
+      if(td == TIMER_2 || td == TIMER_3 || td == TIMER_23) {
+        OC2CONbits.SEL = (td == TIMER_2) ? 0 : 1;
+        OC2CONbits.OCM = 0b110;
+      }
+      break;
+    }
+    case OCM_3: {
+      if(td == TIMER_2 || td == TIMER_3 || td == TIMER_23) {
+        OC3CONbits.SEL = (td == TIMER_2) ? 0 : 1;
+        OC3CONbits.OCM = 0b110;
+      }
+      break;
+    }
+    case OCM_4: {
+      if(td == TIMER_2 || td == TIMER_3 || td == TIMER_23) {
+        OC4CONbits.SEL = (td == TIMER_2) ? 0 : 1;
+        OC4CONbits.OCM = 0b110;
+      }
+      break;
+    }
+    case OCM_5: {
+      if(td == TIMER_2 || td == TIMER_3 || td == TIMER_23) {
+        OC5CONbits.SEL = (td == TIMER_2) ? 0 : 1;
+        OC5CONbits.OCM = 0b110;
+      }
+      break;
+    }
+    default: {
+
+    }
+  }
+  if(ocm == OCM_1) {
+  }
+  else if(ocm == OCM_2) {
+    
+  }
+  if(td == TIMER_2) {
+    OC1CONbits.SEL = 
+  }
+  else if(timer_id == TIMER_3) {
+    OC
+  }
+   
   if(ep >= 0 && ep <= 13) {
     enable_pin = ep;
     return true;
   }
   enable_pin = -1;
   return false;
+}
+
+void Motor::setTimer(int td)
+{
+  if(td == TIMER_2 || td == TIMER_3 || td == TIMER_23) {
+    switch(td) {
+      case: TIMER_2 {
+        T2CONbits.TCKPS = ;
+        PR2 = 1999;
+        break;
+      }
+      case: TIMER_3 {
+        T3CONbits.TCKPS = ;
+        PR3 = 1999;
+        break;
+      }
+      case: TIMER_23 {
+        T
+        break;
+      }
+    }
+  }
 }
 
 void Motor::setSpeed(double s)
